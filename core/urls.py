@@ -24,7 +24,7 @@ from rest_framework.routers import DefaultRouter
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
-from main_app.views import ItemView, DriverView
+from apps.main_app.views import ItemView, DriverView
 
 
 schema_view = get_schema_view(

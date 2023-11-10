@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
 
-    'main_app',
+    'apps.main_app',
+    'apps.users',
 
 ]
 
@@ -57,6 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+AUTH_USER_MODEL = "users.User"
 
 TEMPLATES = [
     {

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from main_app.models import Item, Driver
+from apps.main_app.models import Item, Driver
 
 
 class ItemSerializer(serializers.ModelSerializer):

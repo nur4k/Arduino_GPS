@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
-from main_app.models import Item, Driver
-from main_app.serializers import ItemSerializer, DriverSerializer
+from apps.main_app.models import Item, Driver
+from apps.main_app.serializers import ItemSerializer, DriverSerializer
 
 
 class ItemView(ModelViewSet):
