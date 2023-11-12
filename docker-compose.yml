@@ -40,6 +40,23 @@ services:
     env_file:
       - .env
 
+  nginx:
+    image: nginx
+    volumes:
+      - media:/media
+      - static:/static
+    configs:
+      - source: nginx.conf
+        target: /etc/nginx/nginx.conf
+    ports:
+      - "90:80"
+    networks:
+      - stack
+    depends_on:
+      - database
+      - backend
+
+
 networks:
   stack:
 
@@ -47,3 +64,6 @@ volumes:
   postgres_data:
   media:
   static:
+configs:
+  nginx.conf:
+    file: core/nginx.conf
