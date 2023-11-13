@@ -6,7 +6,7 @@ from apps.main_app.models import Item, Driver
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ('id', 'latitude', 'longitude', 'direction', 'speed', 'timestamp', 'driver')
+        fields = ('id', 'transmitter_id','latitude', 'longitude', 'direction', 'speed', 'timestamp', 'driver')
 
     def create(self, validated_data):
         return super().create(validated_data)

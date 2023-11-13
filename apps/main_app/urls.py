@@ -1,8 +1,12 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from apps.main_app.views import ItemView
+from apps.main_app.views import ItemView, DriverView
 
 
-urlpatterns = [
-    path('item/', ItemView.as_view()),
-]
+router = DefaultRouter()
+router.register('item', ItemView)
+router.register('driver', DriverView)
+
+urlpatterns = []
+
+urlpatterns += router.urls

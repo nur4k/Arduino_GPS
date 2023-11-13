@@ -16,16 +16,13 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls.static import static
 
 from rest_framework import permissions
-from rest_framework.routers import DefaultRouter
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-
-from apps.main_app.views import ItemView, DriverView
 
 
 schema_view = get_schema_view(
@@ -41,18 +38,14 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-router = DefaultRouter()
-
-router.register('item', ItemView)
-router.register('driver', DriverView)
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", schema_view.with_ui(), name="schema-json"),
     path("redoc/", schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
 
-urlpatterns += router.urls
+    path("main_app/", include("apps.main_app.urls")),
+    path("users/", include("apps.users.urls")),
+]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
