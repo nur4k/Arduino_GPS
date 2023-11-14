@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Driver(models.Model):
     fio = models.CharField(verbose_name='ФИО', max_length=155, null=True, blank=True)
     car_number = models.CharField(verbose_name='Номер машины', max_length=20, null=True, blank=True)
@@ -12,7 +13,7 @@ class Driver(models.Model):
         super().save(force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
 
 class Item(models.Model):
-    transmitter_id = models.CharField(verbose_name='ID передатчика', max_length=50)  # Добавленное поле
+    transmitter_id = models.CharField(verbose_name='ID передатчика', max_length=50, null=True, blank=True)  # Добавленное поле
     latitude = models.DecimalField(verbose_name='Широта', max_digits=9, decimal_places=6)  # Широта
     longitude = models.DecimalField(verbose_name='Долгота', max_digits=9, decimal_places=6)  # Долгота
     direction = models.DecimalField(verbose_name='Направление', max_digits=5, decimal_places=2)  # Направление
