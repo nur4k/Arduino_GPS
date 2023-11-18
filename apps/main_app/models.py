@@ -22,4 +22,4 @@ class Item(models.Model):
     driver = models.OneToOneField(Driver, on_delete=models.CASCADE, null=True, blank=True)  # Связь OneToOne с моделью Location
 
     def __str__(self) -> str:
-        return f'{self.transmitter_id} -- {self.driver.car_number} -- {self.speed}'
+        return f'{self.transmitter_id} -- {self.speed}'
